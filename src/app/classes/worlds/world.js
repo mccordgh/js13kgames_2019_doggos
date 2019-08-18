@@ -4,7 +4,6 @@ import { MazeGenerator } from './maze-generator';
 import { Player } from '../entities/creatures/player';
 import { SpatialGrid } from '../utils/spatial-grid';
 import { TileManager } from '../tiles/tile-manager';
-import { LightManager } from '../lighting/light-manager';
 import { Exit } from '../entities/statics/exit';
 import { GameOver } from '../menus/game-over';
 
@@ -24,12 +23,7 @@ export class World {
     this.spatialGrid = new SpatialGrid(this.handler.getWidth() * TILE_WIDTH, this.handler.getHeight() * TILE_HEIGHT, 64);
     this.level = 1;
     this.loadWorld();
-    this.lightManager = new LightManager(handler);
     this.init();
-  }
-
-  getLightManager() {
-    return this.lightManager;
   }
 
   changeLevel() {
@@ -39,7 +33,6 @@ export class World {
     flashWarning = false;
     yellowWallInterval = 0;
 
-    this.lightManager.removeSources();
     this.entityManager.removeEntitiesByType('exit');
     this.entityManager.removeEntitiesByType('journal');
     this.entityManager.removeEntitiesByType('monster');
@@ -54,13 +47,6 @@ export class World {
 
     this.setPlayerSpawn(this.spawnX, this.spawnY);
 
-    this.lightManager.init();
-    this.lightManager.fillLightMap();
-
-    if (this.level === 1) {
-      this.lightManager.addSource(3, 3);
-    }
-
     let endX, endY;
 
     if (this.level === 1) {
@@ -74,18 +60,6 @@ export class World {
     }
 
     this.entityManager.addEntity(new Exit(this.handler,  endX * TILE_WIDTH, endY * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT));
-    this.addEvenSpreadOfLightSources(5);
-    if (this.level !== 1) this.addEvenSpreadOfMonsters(5);
-  }
-
-  addEvenSpreadOfLightSources(spread) {
-    for (let y = spread; y <= this.height; y += spread) {
-      for (let x = spread; x <= this.width; x += spread) {
-        if (this.height - y > 2 && this.width - x > 2) {
-          this.lightManager.addSource(x, y);
-        }
-      }
-    }
   }
 
   getWorldHeight() {
@@ -193,7 +167,6 @@ export class World {
     } else {
       this.checkForWallSwap();
       this.entityManager.tick(dt);
-      this.lightManager.tick(dt);
       this.plusTime();
 
       if (!cleared && this.level !== 1 && timeSpent - (tm * 60 + ts) > 75) {
@@ -237,7 +210,6 @@ export class World {
       }
 
       this.entityManager.render(g);
-      this.lightManager.render(xStart, xEnd, yStart, yEnd, g);
 
       g.drawText({
         fillColor: 'white',
