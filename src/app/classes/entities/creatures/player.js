@@ -7,7 +7,7 @@ export class Player extends Creature {
     this.a = Assets.gA('tiles');
     this.x = x;
     this.y = y;
-    this.speed = 110;
+    this.speed = 200;
     this.type = 'player';
     this.lA = 'pwalk_down';
   }
