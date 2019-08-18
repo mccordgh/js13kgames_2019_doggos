@@ -35,7 +35,7 @@ export class Assets {
 
 let cT = (asset, x, y) => asset.sheet.crop(SPRITE_WIDTH * x, SPRITE_HEIGHT * y, SPRITE_WIDTH, SPRITE_HEIGHT);
 
-let tiles = new Assets('tiles', PATH + "all_tiles.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+let tiles = new Assets('tiles', PATH + "all.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 tiles.path = cT(tiles, 1, 0);
 tiles.pathYellow = cT(tiles, 1, 1);
 tiles.wall = cT(tiles, 0, 0);

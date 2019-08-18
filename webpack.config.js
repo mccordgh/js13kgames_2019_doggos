@@ -48,7 +48,7 @@ let config = {
     new HtmlWebpackPlugin(htmlConfig),
     new HtmlWebpackInlineSourcePlugin(),
     new CopyWebpackPlugin([
-      { from: 'src/res/all_tiles.png', to: 'src/res/all_tiles.png' },
+      { from: 'src/res/all.png', to: 'src/res/all.png' },
       ])
   ],
   stats: 'minimal',
@@ -65,8 +65,8 @@ if(!isProduction) {
 			asset: "[path].gz[query]",
 			algorithm: "gzip",
 			test: /\.js$|\.css$|\.html$/,
-			threshold: 10240,
-			minRatio: 0.8
+			threshold: 0,
+			minRatio: 1,
 		})
   ])
 }

@@ -7,10 +7,6 @@ import { TileManager } from '../tiles/tile-manager';
 import { LightManager } from '../lighting/light-manager';
 import { Exit } from '../entities/statics/exit';
 import { GameOver } from '../menus/game-over';
-import { JournalOne } from '../dialogue/journals/journal-one';
-import { JournalTwo } from "../dialogue/journals/journal-two";
-import { JournalThree } from "../dialogue/journals/journal-three";
-import { JournalFour } from "../dialogue/journals/journal-four";
 
 let yellowTilesDown = false, yellowWallInterval = 0, yellowWallIntervalMax = 3 * 60,
   timeSpent = 0, tm = 5, ts = 0, tc = 0, cleared, flashWarning = false, flashOn = true,
@@ -29,7 +25,6 @@ export class World {
     this.level = 1;
     this.loadWorld();
     this.lightManager = new LightManager(handler);
-    this.dialogue = handler.getGame().d;
     this.init();
   }
 
@@ -81,18 +76,6 @@ export class World {
     this.entityManager.addEntity(new Exit(this.handler,  endX * TILE_WIDTH, endY * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT));
     this.addEvenSpreadOfLightSources(5);
     if (this.level !== 1) this.addEvenSpreadOfMonsters(5);
-
-    if (this.level <= 4) {
-      let j = [
-        new JournalOne(),
-        new JournalTwo(),
-        new JournalThree(),
-        new JournalFour(),
-      ][this.level - 1];
-
-      let d = this.dialogue.aW;
-      d(j.text);
-    }
   }
 
   addEvenSpreadOfLightSources(spread) {
@@ -194,7 +177,6 @@ export class World {
 
     if (ts <= 0 && tm <= 0) {
       let gameOver = new GameOver(this.handler);
-      this.dialogue.clear();
       this.handler.getGame().getGameState().setState(gameOver);
     }
   }
@@ -203,8 +185,6 @@ export class World {
     if (this.death > 0) {
       if (this.death === 1) {
         this.entityManager.removeEntity(this.entityManager.getPlayer());
-        this.dialogue.clear();
-        this.dialogue.aW('+It looks like this one, wasn\'t quick enough.+');
       } else if (this.death === 220) {
         let gameOver = new GameOver(this.handler);
         this.handler.getGame().getGameState().setState(gameOver);
@@ -217,7 +197,6 @@ export class World {
       this.plusTime();
 
       if (!cleared && this.level !== 1 && timeSpent - (tm * 60 + ts) > 75) {
-          this.dialogue.aW('(the monsters start to crumble all around you.)');
           this.entityManager.removeEntitiesByType('monster');
           cleared = true;
       }

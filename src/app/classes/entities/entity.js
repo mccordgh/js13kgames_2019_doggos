@@ -60,7 +60,6 @@ export class Entity {
 
     if (this.checkCollidingTypes(e1, e2, 'player', 'exit')) {
       if (hW.level >= 4) {
-        hW.dialogue.clear();
 
         let ending = new Ending(this.handler);
         hG.getGameState().setState(ending);
@@ -71,7 +70,6 @@ export class Entity {
     }
 
     if (this.checkCollidingTypes(e1, e2, 'player', 'monster')) {
-			hW.dialogue.clear();
       this.handler.getWorld().death = 1;
     }
   }
