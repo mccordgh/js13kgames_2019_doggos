@@ -1,5 +1,5 @@
 import { EntityManager } from '../entities/entity-manager';
-import { Clone } from '../entities/creatures/monsters/clone';
+import { Doggo } from '../entities/creatures/doggos/doggo';
 // import { Maze } from './maze-generator';
 import { Player } from '../entities/creatures/player';
 import { SpatialGrid } from '../utils/spatial-grid';
@@ -29,15 +29,16 @@ export class World {
   }
 
   changeLevel() {
-    this.setPlayerSpawn(this.spawnX, this.spawnY);
     this.level += 1;
     this.tiles = [];
-    flashWarning = false;
-    yellowWallInterval = 0;
+    // flashWarning = false;
+    // yellowWallInterval = 0;
 
-    this.entityManager.removeEntitiesByType('exit');
-    this.entityManager.removeEntitiesByType('journal');
-    this.entityManager.removeEntitiesByType('monster');
+    // this.entityManager.removeEntitiesByType('exit');
+    // this.entityManager.removeEntitiesByType('journal');
+    // this.entityManager.removeEntitiesByType('doggo');
+
+    this.setPlayerSpawn(this.spawnX, this.spawnY);
 
     this.loadWorld();
     this.init();
@@ -61,7 +62,9 @@ export class World {
       if (endX === 2 && endY === 2) endX = this.width - 2;
     }
 
-    this.entityManager.addEntity(new Exit(this.handler,  endX * TILE_WIDTH, endY * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT));
+    this.addEvenSpreadOfDoggos(4);
+
+    // this.entityManager.addEntity(new Exit(this.handler,  endX * TILE_WIDTH, endY * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT));
   }
 
   getWorldHeight() {
@@ -72,11 +75,11 @@ export class World {
     return this.width;
   }
 
-  addEvenSpreadOfMonsters(spread) {
+  addEvenSpreadOfDoggos(spread) {
     for (let y = spread; y <= this.height; y += spread) {
       for (let x = spread; x <= this.width; x += spread) {
         if (this.height - y > 2 && this.width - x > 2) {
-          this.entityManager.addEntity(new Clone(this.handler, x * TILE_WIDTH, y * TILE_WIDTH));
+          this.entityManager.addEntity(new Doggo(this.handler, x * TILE_WIDTH, y * TILE_WIDTH));
         }
       }
     }
@@ -99,20 +102,20 @@ export class World {
     this.spawnY = level.spawnY * TILE_HEIGHT;
   }
 
-  plusTime() {
-    tc++;
+  // plusTime() {
+  //   tc++;
 
-    if (tc === 60) {
-      ts = ts === 0 ? 59 : ts -= 1;
-      if (ts === 59) tm--;
-      tc = 0;
-    }
+  //   if (tc === 60) {
+  //     ts = ts === 0 ? 59 : ts -= 1;
+  //     if (ts === 59) tm--;
+  //     tc = 0;
+  //   }
 
-    if (ts <= 0 && tm <= 0) {
-      let gameOver = new GameOver(this.handler);
-      this.handler.getGame().getGameState().setState(gameOver);
-    }
-  }
+  //   if (ts <= 0 && tm <= 0) {
+  //     let gameOver = new GameOver(this.handler);
+  //     this.handler.getGame().getGameState().setState(gameOver);
+  //   }
+  // }
 
   tick(dt) {
     // if (this.death > 0) {
@@ -124,11 +127,15 @@ export class World {
     //   }
     //   this.death++;
     // } else {
+      if (!this.entityManager.getEntityTypeCount('doggo')) {
+        this.changeLevel();
+      }
+
       this.entityManager.tick(dt);
-      this.plusTime();
+      // this.plusTime();
 
       // if (!cleared && this.level !== 1 && timeSpent - (tm * 60 + ts) > 75) {
-      //     this.entityManager.removeEntitiesByType('monster');
+      //     this.entityManager.removeEntitiesByType('doggo');
       //     cleared = true;
       // }
     // }

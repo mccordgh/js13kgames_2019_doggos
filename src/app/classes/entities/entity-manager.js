@@ -52,6 +52,12 @@ export class EntityManager {
     return entities;
   }
 
+  getEntityTypeCount(type) {
+    var types = entities.filter(e => e.type === type);
+
+    return types.length;
+  }
+
   addEntity(e) {
     entities.push(e);
     handler.getWorld().getSpatialGrid().insert(new Rectangle(e.x + e.b.x, e.y + e.b.y, e.b.w, e.b.h), e);

@@ -86,6 +86,7 @@ export class Game {
     g = display.getGraphics();
     state = new State();
     gameCamera = new GameCamera(handler, 0, 0);
+
     soundManager = new SoundManager();
     handler.setSM(soundManager);
 

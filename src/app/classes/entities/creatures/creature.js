@@ -94,12 +94,12 @@ export class Creature extends Entity {
     } else if (this.xMove > 0) {
 	    this.lA = n + "walk_right";
 	    return this.a.animations[n + "walk_right"].getCurrentFrame();
-    } else if (this.yMove < 0){
-      this.lA = n + "walk_up";
-      return this.a.animations[n + "walk_up"].getCurrentFrame();
-    } else if (this.yMove > 0){
-      this.lA = n + "walk_down";
-      return this.a.animations[n + "walk_down"].getCurrentFrame();
+    // } else if (this.yMove < 0){
+    //   this.lA = n + "walk_up";
+    //   return this.a.animations[n + "walk_up"].getCurrentFrame();
+    // } else if (this.yMove > 0){
+    //   this.lA = n + "walk_down";
+    //   return this.a.animations[n + "walk_down"].getCurrentFrame();
     } else {
       return this.a.animations[this.lA].getCurrentFrame();
     }

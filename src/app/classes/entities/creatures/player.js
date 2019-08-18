@@ -9,7 +9,7 @@ export class Player extends Creature {
     this.y = y;
     this.speed = 200;
     this.type = 'player';
-    this.lA = 'pwalk_down';
+    this.lA = 'pwalk_right';
   }
 
   tick(dt) {

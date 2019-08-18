@@ -1,7 +1,7 @@
 import { Assets } from '../../../gfx/assets';
 import { Creature } from '../creature';
 
-export class Clone extends Creature {
+export class Doggo extends Creature {
   constructor(handler, x, y) {
     super(handler, x, y, TILE_WIDTH, TILE_HEIGHT);
     this.a = Assets.gA('tiles');
@@ -9,12 +9,12 @@ export class Clone extends Creature {
     this.y = y;
     this.sX = x;
     this.sY = y;
-    this.type = 'monster';
+    this.type = 'doggo';
     this.p = this.getPatrolPattern(); // patrol
     this.pL = 100; // patrolLength
     this.dM = 0; // directionMoving
     this.nom = 0; // numberOfMoves
-    this.lA = 'cwalk_down'; // lastAnimation
+    this.lA = 'cwalk_left'; // lastAnimation
   }
 
   getPatrolPattern() {
@@ -22,7 +22,7 @@ export class Clone extends Creature {
   }
 
   mCP() {
-    if (Math.random() < 0.30) this.p = this.p === 'vertical' ? 'horizontal' : 'vertical';
+    if (Math.random() < 0.25) this.p = this.p === 'vertical' ? 'horizontal' : 'vertical';
   }
 
   cM() {

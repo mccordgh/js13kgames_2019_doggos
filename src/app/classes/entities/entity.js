@@ -52,7 +52,7 @@ export class Entity {
   }
 
   checkForCollisionEvents(e1, e2) {
-    if (this.checkCollidingTypes(e1, e2, 'monster', 'monster')) return;
+    if (this.checkCollidingTypes(e1, e2, 'doggo', 'doggo')) return;
 
     let h = this.handler;
     let hG = h.getGame();
@@ -69,8 +69,13 @@ export class Entity {
       return;
     }
 
-    if (this.checkCollidingTypes(e1, e2, 'player', 'monster')) {
-      this.handler.getWorld().death = 1;
+    if (this.checkCollidingTypes(e1, e2, 'player', 'doggo')) {
+      var p = e1.type === 'player' ? e1 : e2;
+      var d = e2.type === 'doggo' ? e2 : e1;
+
+      if (p.lA === 'pwalk_right' && d.lA === 'cwalk_right' || p.lA === 'pwalk_left' && d.lA === 'cwalk_left') {
+        this.handler.getWorld().getEntityManager().removeEntity(d);
+      }
     }
   }
 

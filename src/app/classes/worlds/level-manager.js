@@ -10,11 +10,16 @@
 // };
 
 import levelOne from './level-one.js';
+import levelTwo from './level-two.js';
 
 export class LevelManager {
   getLevel(level) {
     if (level === 1) {
       return levelOne;
+    }
+
+    if (level == 2) {
+      return levelTwo;
     }
 
     throw new Error('No level info found for level' + level);
