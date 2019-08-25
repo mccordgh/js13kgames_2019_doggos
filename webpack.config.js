@@ -37,7 +37,7 @@ let config = {
       filename: '[name].css'
     }),
     new CopyPlugin([
-      { from: './src/res', to: './src/res' }
+      { from: './src/res/all.png', to: './src/res/all.png' }
     ]),
   ],
   devServer: {
@@ -53,7 +53,7 @@ if(!isProduction) {
 		new CompressionPlugin({
 			filename: "[path].gz[query]",
 			algorithm: "gzip",
-			test: /\.js$|\.html$/,
+			test: /\.js$|\.html$|\.png$/,
 			threshold: 0,
 			minRatio: 1
 		})
