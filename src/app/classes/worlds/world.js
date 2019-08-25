@@ -1,16 +1,9 @@
 import { EntityManager } from '../entities/entity-manager';
 import { Doggo } from '../entities/creatures/doggos/doggo';
-// import { Maze } from './maze-generator';
 import { Player } from '../entities/creatures/player';
 import { SpatialGrid } from '../utils/spatial-grid';
 import { TileManager } from '../tiles/tile-manager';
-import { Exit } from '../entities/statics/exit';
-import { GameOver } from '../menus/game-over';
 import { LevelManager } from './level-manager';
-
-let yellowTilesDown = false, yellowWallInterval = 0, yellowWallIntervalMax = 3 * 60,
-  timeSpent = 0, tm = 5, ts = 0, tc = 0, cleared, flashWarning = false, flashOn = true,
-  flashCount = 0;
 
 export class World {
   constructor(handler) {
@@ -31,12 +24,6 @@ export class World {
   changeLevel() {
     this.level += 1;
     this.tiles = [];
-    // flashWarning = false;
-    // yellowWallInterval = 0;
-
-    // this.entityManager.removeEntitiesByType('exit');
-    // this.entityManager.removeEntitiesByType('journal');
-    // this.entityManager.removeEntitiesByType('doggo');
 
     this.setPlayerSpawn(this.spawnX, this.spawnY);
 
@@ -45,8 +32,8 @@ export class World {
   }
 
   init() {
-    timeSpent = (tm * 60) + ts;
-    cleared = false;
+    // timeSpent = (tm * 60) + ts;
+    // cleared = false;
 
     this.setPlayerSpawn(this.spawnX, this.spawnY);
 
@@ -63,8 +50,6 @@ export class World {
     }
 
     this.addEvenSpreadOfDoggos(4);
-
-    // this.entityManager.addEntity(new Exit(this.handler,  endX * TILE_WIDTH, endY * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT));
   }
 
   getWorldHeight() {

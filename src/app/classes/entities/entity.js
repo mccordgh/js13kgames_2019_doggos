@@ -1,5 +1,3 @@
-import { Ending } from '../menus/ending';
-import { GameOver } from '../menus/game-over';
 import { Rectangle } from '../gfx/shapes/rectangle';
 
 export class Entity {
@@ -58,16 +56,16 @@ export class Entity {
     let hG = h.getGame();
     let hW = h.getWorld();
 
-    if (this.checkCollidingTypes(e1, e2, 'player', 'exit')) {
-      if (hW.level >= 4) {
+    // if (this.checkCollidingTypes(e1, e2, 'player', 'exit')) {
+    //   if (hW.level >= 4) {
 
-        let ending = new Ending(this.handler);
-        hG.getGameState().setState(ending);
-      }
+    //     let ending = new Ending(this.handler);
+    //     hG.getGameState().setState(ending);
+    //   }
 
-      hW.changeLevel();
-      return;
-    }
+    //   hW.changeLevel();
+    //   return;
+    // }
 
     if (this.checkCollidingTypes(e1, e2, 'player', 'doggo')) {
       var p = e1.type === 'player' ? e1 : e2;
