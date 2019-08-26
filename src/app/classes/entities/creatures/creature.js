@@ -9,10 +9,10 @@ export class Creature extends Entity {
     this.speed = 40;
     this.xMove = 0;
     this.yMove = 0;
-    this.b.x = 16;
-    this.b.y = 24;
-    this.b.w = 32;
-    this.b.h = 39;
+    this.b.x = 4;
+    this.b.y = 16;
+    this.b.w = 28;
+    this.b.h = 16;
   }
 
   tick() {

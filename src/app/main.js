@@ -1,12 +1,8 @@
 import { Game } from './classes/game';
 
-window.TILE_HEIGHT = 64;
-window.TILE_WIDTH = 64;
-window.DEFAULT_LIGHT = 0.85;
-window.CENTER_LIGHT = 0.3;
-window.INNER_LIGHT = 0.5;
-window.OUTER_LIGHT = 0.65;
+window.TILE_HEIGHT = 32;
+window.TILE_WIDTH = 32;
 
-let game = new Game('Me, Myself, and I, and i', 1024, 576);
+let game = new Game('Doggo Detective', 1024, 704);
 
 game.start();

@@ -98,14 +98,19 @@ export class Doggo extends Creature {
   }
 
   tick(dt) {
-    this.cM();
-    this.cW();
-    this.setPatrolMovement(dt);
-    super.tick();
-    this.move();
+    // this.cM();
+    // this.cW();
+    // this.setPatrolMovement(dt);
+    // super.tick();
+    // this.move();
   }
 
   render(g){
     g.myDrawImage(this.getCurrentAnimationFrame(), this.x - this.handler.getGameCamera().getxOffset(), this.y - this.handler.getGameCamera().getyOffset(), this.width, this.height);
+
+    // ****** DRAW BOUNDING BOX DON'T DELETE!!
+    // g.fillStyle = "red";
+    // g.fillRect(this.b.x + this.x - this.handler.getGameCamera().getxOffset(), this.b.y + this.y - this.handler.getGameCamera().getyOffset(), this.b.w, this.b.h);
+    // ****** DRAW BOUNDING BOX DON'T DELETE!!
   }
 }

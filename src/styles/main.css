@@ -8,11 +8,15 @@ html,
 }
 
 body {
-    background-color: lavender;
+    background-color: black;
 }
 
 #main {
     align-items: center;
     display: flex;
     justify-content: center;
+}
+
+#canvas {
+    border: 1px solid white;
 }

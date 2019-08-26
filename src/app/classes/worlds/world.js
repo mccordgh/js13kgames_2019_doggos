@@ -130,7 +130,7 @@ export class World {
     // if (this.death === 0) {
 
       // console.log({width: this.width, height: this.height, handler: this.handler, cam: this.handler.getGameCamera(),
-        // xOffset: this.handler.getGameCamera().getxOffset(), yOffset: this.handler.getGameCamera().getyOffset(), TILE_WIDTH, TILE_HEIGHT})
+      // xOffset: this.handler.getGameCamera().getxOffset(), yOffset: this.handler.getGameCamera().getyOffset(), TILE_WIDTH, TILE_HEIGHT})
 
       let xStart = parseInt(Math.max(0, this.handler.getGameCamera().getxOffset() / TILE_WIDTH));
       let xEnd = parseInt(Math.min(this.width, (this.handler.getGameCamera().getxOffset() + this.handler.getWidth()) / TILE_WIDTH + 1));

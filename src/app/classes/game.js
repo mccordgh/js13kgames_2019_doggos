@@ -104,6 +104,7 @@ export class Game {
 
   render(){
     if (state.getState() && !display.paused)
+      g.clearRect(0, 0, this.width, this.height);
       state.getState().render(g);
   }
 }
