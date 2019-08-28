@@ -16,6 +16,7 @@ export class Assets {
     this.animations = {};
   }
 
+  //addAsset
   aA(name, animation) {
     this.animations[name] = animation;
   }
@@ -33,43 +34,30 @@ export class Assets {
   }
 }
 
+//cropTile
 let cT = (asset, x, y) => asset.sheet.crop(SPRITE_WIDTH * x, SPRITE_HEIGHT * y, SPRITE_WIDTH, SPRITE_HEIGHT);
 
-let tiles = new Assets('tiles', PATH + "all.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-tiles.path = cT(tiles, 1, 0);
-tiles.pathYellow = cT(tiles, 1, 1);
-tiles.wall = cT(tiles, 0, 0);
-tiles.wallYellow = cT(tiles, 0, 1);
-tiles.exit = cT(tiles, 1, 2);
-tiles.lantern = cT(tiles, 0, 2);
+let all = new Assets('tiles', PATH + "all.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+// tiles.path = cT(tiles, 1, 0);
+// tiles.pathYellow = cT(tiles, 1, 1);
+// tiles.wall = cT(tiles, 0, 0);
+// tiles.wallYellow = cT(tiles, 0, 1);
+// tiles.exit = cT(tiles, 1, 2);
+// tiles.lantern = cT(tiles, 0, 2);
 
-let aA = (sprites, n, wurow, wrrow, wdrow, wlrow) => {
-  let framespeed = 200, wrframes = [], wlframes = [], wuframes = [], wdframes = [];
+//buildAsset
+let bA = (sprites, n, idlerow) => {
+  let framespeed = 200, idleFrames = [];
 
   for (let i = 0; i < 2; i++) {
-    wuframes.push({
-      frame: sprites.sheet.crop(sprites.width * i, sprites.height * wurow, sprites.width, sprites.height),
-      speed: framespeed
-    });
-    wrframes.push({
-      frame: sprites.sheet.crop(sprites.width * i, sprites.height * wrrow + 1, sprites.width, sprites.height),
-      speed: framespeed
-    });
-    wdframes.push({
-      frame: sprites.sheet.crop(sprites.width * i, sprites.height * wdrow + 1, sprites.width, sprites.height),
-      speed: framespeed
-    });
-    wlframes.push({
-      frame: sprites.sheet.crop(sprites.width * i, sprites.height * wlrow + 1, sprites.width, sprites.height),
+    idleFrames.push({
+      frame: sprites.sheet.crop(sprites.width * i, sprites.height * idleFrames, sprites.width, sprites.height),
       speed: framespeed
     });
   }
 
-  sprites.aA(n + "walk_up", new Animation(wuframes));
-  sprites.aA(n + "walk_right", new Animation(wrframes));
-  sprites.aA(n + "walk_down", new Animation(wdframes));
-  sprites.aA(n + "walk_left", new Animation(wlframes));
+  sprites.aA(n + "_idle", new Animation(idleFrames));
 };
 
-aA(tiles, 'p', 3, 4, 5, 6);
-aA(tiles, 'c', 7, 8, 9, 10);
+bA(all, 'tree', 0);
+bA(all, 'factory', 1);

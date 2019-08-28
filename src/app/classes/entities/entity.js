@@ -2,10 +2,10 @@ import { Rectangle } from '../gfx/shapes/rectangle';
 
 export class Entity {
   constructor(handler, x, y, width, height) {
-    this.x = x;
-    this.y = y;
-    this.width = TILE_WIDTH;
-    this.height = TILE_HEIGHT;
+    this.x = x * TILE_SIZE;
+    this.y = y * TILE_SIZE;
+    this.width = TILE_SIZE;
+    this.height = TILE_SIZE;
     this.handler = handler;
     this.b = new Rectangle(0, 0, width, height);
     this.moveThrough = false;

@@ -6,19 +6,11 @@ export class Handler {
   }
 
   getWidth() {
-    return this.game.getWidth();
+    return this.game.width;
   }
 
   getHeight() {
-    return this.game.getHeight();
-  }
-
-  getKeyManager() {
-    return this.game.getKeyManager();
-  }
-
-  getGameCamera() {
-    return this.game.getGameCamera();
+    return this.game.height;
   }
 
   getWorld() {

@@ -1,20 +1,15 @@
 import { Assets } from '../../gfx/assets';
 import { Creature } from './creature';
 
-export class Player extends Creature {
+export class Tree extends Creature {
   constructor(handler, x, y){
     super(handler, x, y);
     this.a = Assets.gA('tiles');
-    this.x = x;
-    this.y = y;
-    this.speed = 200;
-    this.type = 'player';
-    this.lA = 'pwalk_right';
+    this.type = 'tree';
+    this.lA = 'tree_idle';
   }
 
   tick(dt) {
-    // this.xMove = this.yMove = 0;
-
     super.tick(dt);
 
     this.move();
