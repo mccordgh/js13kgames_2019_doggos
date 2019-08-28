@@ -1,14 +1,12 @@
 import { Display } from './display/display';
 import { GameState } from './states/game-state';
 import { Handler } from './handler';
-import { KeyManager } from './input/key-manager';
-import { MainMenu } from './menus/main-menu';
+// import { KeyManager } from './input/key-manager';
+// import { MainMenu } from './menus/main-menu';
 import { State } from './states/state';
-import { SoundManager } from './sounds/sound-manager';
+// import { SoundManager } from './sounds/sound-manager';
 
-let running = false;
-let g, display, keyManager, handler, soundManager;
-let state, gameState, mainMenu;
+let running = false, g, display, keyManager, handler, state, gameState;
 
 export class Game {
   constructor(title, width, height){
@@ -57,12 +55,12 @@ export class Game {
   init() {
     handler = new Handler(this);
     display = new Display(this.title, this.width, this.height);
-    keyManager = new KeyManager();
+    // keyManager = new KeyManager();
     g = display.getGraphics();
     state = new State();
 
-    soundManager = new SoundManager();
-    handler.setSM(soundManager);
+    // soundManager = new SoundManager();
+    // handler.setSM(soundManager);
 
     // mainMenu = new MainMenu(handler);
     // state.setState(mainMenu);
@@ -71,7 +69,7 @@ export class Game {
   }
 
   tick(dt) {
-    keyManager.tick();
+    // keyManager.tick();
     if (state.getState() && !display.paused)
       state.getState().tick(dt);
   }

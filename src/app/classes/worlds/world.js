@@ -1,15 +1,12 @@
 import { EntityManager } from '../entities/entity-manager';
 import { Tree } from '../entities/creatures/tree';
-import { Player } from '../entities/creatures/player';
-import { SpatialGrid } from '../utils/spatial-grid';
 import { TileManager } from '../tiles/tile-manager';
 
 export class World {
   constructor(handler) {
     this.tiles = [];
     this.handler = handler;
-    this.entityManager = new EntityManager(handler, new Player(handler, 20, 20));
-    this.spatialGrid = new SpatialGrid(this.handler.getWidth() * TILE_SIZE, this.handler.getHeight() * TILE_SIZE, 64);
+    this.entityManager = new EntityManager(handler);
     handler.setWorld(this);
 
     // this.levelManager = new LevelManager()
@@ -160,9 +157,5 @@ export class World {
 
   getEntityManager() {
     return this.entityManager;
-  }
-
-  getSpatialGrid() {
-    return this.spatialGrid;
   }
 }

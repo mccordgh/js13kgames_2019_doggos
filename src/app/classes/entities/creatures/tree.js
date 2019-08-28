@@ -9,12 +9,6 @@ export class Tree extends Creature {
     this.lA = 'tree_idle';
   }
 
-  tick(dt) {
-    super.tick(dt);
-
-    this.move();
-  }
-
   render(g) {
     g.myDrawImage(this.getCurrentAnimationFrame(), this.x, this.y, TILE_SIZE, TILE_SIZE);
   }

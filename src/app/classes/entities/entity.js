@@ -1,14 +1,14 @@
-import { Rectangle } from '../gfx/shapes/rectangle';
-
 export class Entity {
-  constructor(handler, x, y, width, height) {
+  constructor(handler, x, y) {
     this.x = x * TILE_SIZE;
     this.y = y * TILE_SIZE;
     this.width = TILE_SIZE;
     this.height = TILE_SIZE;
     this.handler = handler;
-    this.b = new Rectangle(0, 0, width, height);
-    this.moveThrough = false;
+  }
+
+  tick() {
+    //
   }
 
   getX() {
@@ -26,60 +26,6 @@ export class Entity {
   getHeight() {
     return this.height;
   }
-
-  getCollisionBounds(xOffset, yOffset) {
-    return new Rectangle(parseInt(this.x + this.b.x + xOffset),
-      parseInt(this.y + this.b.y + yOffset),
-      this.b.w, this.b.h);
-  }
-
-  checkEntityCollisions(xOffset, yOffset) {
-    let candidates =  this.handler.getWorld().getSpatialGrid().retrieve(new Rectangle(this.x + this.b.x + xOffset, this.y + this.b.y + yOffset, this.b.w, this.b.h), this);
-
-    for(let i = 0; i < candidates.length; i++) {
-      let e = candidates[i];
-        if (e.moveThrough) return false;
-
-        if (e.getCollisionBounds(0, 0).intersects(this.getCollisionBounds(xOffset, yOffset))) {
-            this.checkForCollisionEvents(this, e);
-
-            return true;
-        }
-    }
-    return false;
-  }
-
-  checkForCollisionEvents(e1, e2) {
-    if (this.checkCollidingTypes(e1, e2, 'doggo', 'doggo')) return;
-
-    let h = this.handler;
-    let hG = h.getGame();
-    let hW = h.getWorld();
-
-    // if (this.checkCollidingTypes(e1, e2, 'player', 'exit')) {
-    //   if (hW.level >= 4) {
-
-    //     let ending = new Ending(this.handler);
-    //     hG.getGameState().setState(ending);
-    //   }
-
-    //   hW.changeLevel();
-    //   return;
-    // }
-
-    if (this.checkCollidingTypes(e1, e2, 'player', 'doggo')) {
-      var p = e1.type === 'player' ? e1 : e2;
-      var d = e2.type === 'doggo' ? e2 : e1;
-
-      if (p.lA === 'pwalk_right' && d.lA === 'cwalk_right' || p.lA === 'pwalk_left' && d.lA === 'cwalk_left') {
-        this.handler.getWorld().getEntityManager().removeEntity(d);
-      }
-    }
-  }
-
-  checkCollidingTypes(e1, e2, type1, type2) {
-    return ((e1.type === type1 && e2.type === type2) || (e1.type === type2 && e2.type === type1));
-      }
 
   setX(x) {
     this.x = x;
