@@ -1,6 +1,7 @@
 import { EntityManager } from '../entities/entity-manager';
 import { Pylon } from '../entities/creatures/pylon';
 import { Priest } from '../entities/creatures/priest';
+import { Bishop } from '../entities/creatures/bishop';
 
 export class World {
   constructor(handler) {
@@ -14,6 +15,31 @@ export class World {
   init() {
     this.entityManager.addEntity(new Pylon(this.handler, TILE_SIZE * 5, TILE_SIZE * 4));
     this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Priest(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
+    this.entityManager.addEntity(new Bishop(this.handler));
   }
 
   tick(dt) {

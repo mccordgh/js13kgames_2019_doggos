@@ -53,3 +53,4 @@ let bA = (sprites, n, idlerow) => {
 
 bA(all, 'pylon', 0);
 bA(all, 'priest', 1);
+bA(all, 'bishop', 2);
