@@ -4,7 +4,6 @@ export class Animation {
     this.i = 0;
     this.l = Date.now();
     this.t = 0;
-    this.s = 1000;
   }
 
   tick() {

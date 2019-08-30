@@ -11,13 +11,16 @@ export class Display {
 
   createDisplay() {
     document.title = this.t;
+
     let myCanvas = document.getElementById("canvas");
     myCanvas.setAttribute("height", this.h);
     myCanvas.setAttribute("width", this.w);
     graphics = myCanvas.getContext("2d");
+    graphics.strokeStyle = "#333333";
     graphics.webkitImageSmoothingEnabled = false;
     graphics.mozImageSmoothingEnabled = false;
     graphics.imageSmoothingEnabled = false;
+
     this.setEventListeners();
   };
 
@@ -55,9 +58,9 @@ CanvasRenderingContext2D.prototype.myDrawImage = (asset, x, y, width, height) =>
   graphics.drawImage(asset.sheet, asset.x, asset.y, asset.width, asset.height, x, y, width, height);
 };
 
-CanvasRenderingContext2D.prototype.drawText = (txtObj) => {
-  graphics.font = `${txtObj.fontSize}px Arial`;
-  graphics.fillStyle = txtObj.fillColor;
-  graphics.strokeText(txtObj.text, txtObj.x, txtObj.y);
-  graphics.fillText(txtObj.text,  txtObj.x, txtObj.y);
-};
+// CanvasRenderingContext2D.prototype.drawText = (txtObj) => {
+//   graphics.font = `${txtObj.fontSize}px Arial`;
+//   graphics.fillStyle = txtObj.fillColor;
+//   graphics.strokeText(txtObj.text, txtObj.x, txtObj.y);
+//   graphics.fillText(txtObj.text,  txtObj.x, txtObj.y);
+// };

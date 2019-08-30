@@ -1,14 +1,10 @@
 export class Entity {
-  constructor(handler, x, y) {
-    this.x = x * TILE_SIZE;
-    this.y = y * TILE_SIZE;
-    this.width = TILE_SIZE;
-    this.height = TILE_SIZE;
+  constructor(handler, x, y, width, height) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
     this.handler = handler;
-  }
-
-  tick() {
-    //
   }
 
   getX() {

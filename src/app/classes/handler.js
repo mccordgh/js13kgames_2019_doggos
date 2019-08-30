@@ -1,8 +1,20 @@
+import { IncomeManager } from "./income/income-manager";
+
 let sm;
 
 export class Handler {
   constructor(game) {
     this.game = game;
+  }
+
+  createIncomeManager() {
+    this.incomeManager = new IncomeManager(this);
+
+    return this.incomeManager;
+  }
+
+  getIncomeManager() {
+    return this.incomeManager;
   }
 
   getWidth() {
@@ -11,10 +23,6 @@ export class Handler {
 
   getHeight() {
     return this.game.height;
-  }
-
-  getWorld() {
-    return this.world;
   }
 
   setWorld(world) {

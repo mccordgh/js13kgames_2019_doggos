@@ -1,8 +1,11 @@
 import { Game } from './classes/game';
 
-window.TILE_SIZE = 96;
-window.WORLD_SIZE = 8;
+window.TILE_SIZE = 64;
+window.GAME_WIDTH = 11;
+window.GAME_HEIGHT = 9;
 
-let game = new Game('Doggo Detective', 96 * WORLD_SIZE, 96 * WORLD_SIZE);
+window.rndInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+let game = new Game('IDLETIMES', TILE_SIZE * GAME_WIDTH, TILE_SIZE * GAME_HEIGHT);
 
 game.start();

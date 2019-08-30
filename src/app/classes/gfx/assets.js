@@ -35,23 +35,15 @@ export class Assets {
 }
 
 //cropTile
-let cT = (asset, x, y) => asset.sheet.crop(SPRITE_WIDTH * x, SPRITE_HEIGHT * y, SPRITE_WIDTH, SPRITE_HEIGHT);
-
-let all = new Assets('tiles', PATH + "all.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-// tiles.path = cT(tiles, 1, 0);
-// tiles.pathYellow = cT(tiles, 1, 1);
-// tiles.wall = cT(tiles, 0, 0);
-// tiles.wallYellow = cT(tiles, 0, 1);
-// tiles.exit = cT(tiles, 1, 2);
-// tiles.lantern = cT(tiles, 0, 2);
+let all = new Assets('all', PATH + "all.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 
 //buildAsset
 let bA = (sprites, n, idlerow) => {
-  let framespeed = 200, idleFrames = [];
+  let framespeed = 800, idleFrames = [];
 
   for (let i = 0; i < 2; i++) {
     idleFrames.push({
-      frame: sprites.sheet.crop(sprites.width * i, sprites.height * idleFrames, sprites.width, sprites.height),
+      frame: sprites.sheet.crop(sprites.width * i, sprites.height * idlerow, sprites.width, sprites.height),
       speed: framespeed
     });
   }
@@ -59,5 +51,5 @@ let bA = (sprites, n, idlerow) => {
   sprites.aA(n + "_idle", new Animation(idleFrames));
 };
 
-bA(all, 'tree', 0);
-bA(all, 'factory', 1);
+bA(all, 'pylon', 0);
+bA(all, 'priest', 1);

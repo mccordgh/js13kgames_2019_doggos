@@ -1,12 +1,9 @@
 import { Display } from './display/display';
 import { GameState } from './states/game-state';
 import { Handler } from './handler';
-// import { KeyManager } from './input/key-manager';
-// import { MainMenu } from './menus/main-menu';
 import { State } from './states/state';
-// import { SoundManager } from './sounds/sound-manager';
 
-let running = false, g, display, keyManager, handler, state, gameState;
+let running = false, g, display, handler, state, gameState;
 
 export class Game {
   constructor(title, width, height){
@@ -55,7 +52,6 @@ export class Game {
   init() {
     handler = new Handler(this);
     display = new Display(this.title, this.width, this.height);
-    // keyManager = new KeyManager();
     g = display.getGraphics();
     state = new State();
 

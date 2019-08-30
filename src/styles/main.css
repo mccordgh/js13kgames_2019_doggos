@@ -14,7 +14,16 @@ body {
 #main {
     align-items: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+}
+
+#income {
+    color: yellow;
+    font-size: 1.6rem;
+    height: 2rem;
+    margin: 1rem auto;
+    text-align: center;
 }
 
 #canvas {

@@ -1,5 +1,3 @@
-// import { Rectangle } from '../gfx/shapes/rectangle';
-
 let handler, entities;
 
 let compare = (a, b) => {
@@ -23,13 +21,19 @@ export class EntityManager {
     entities.sort(compare);
 
     for(let i = 0; i < entities.length; i++){
-      entities[i].tick(dt);
+      let e = entities[i];
+
+      e.tick(dt);
+
+      if (e.item) {
+        e.item.tick();
+      }
     }
   }
 
   render(g) {
     for(let i = 0; i < entities.length; i++){
-      entities[i].tick(g);
+      entities[i].render(g);
     }
   }
 
@@ -40,12 +44,6 @@ export class EntityManager {
   getEntities() {
     return entities;
   }
-
-  // getEntityTypeCount(type) {
-  //   var types = entities.filter(e => e.type === type);
-
-  //   return types.length;
-  // }
 
   addEntity(e) {
     entities.push(e);
