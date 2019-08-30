@@ -3,8 +3,8 @@ import { Entity } from '../entity';
 export class Creature extends Entity {
   constructor(handler, x, y, width = 64, height = 64, zone = null) {
     if (zone) {
-      x = rndInt(zone[0], zone[0] + (TILE_SIZE - 16))
-      y = rndInt(zone[1], zone[1] + (TILE_SIZE - 16))
+      x = rndInt(zone[0], zone[0] + (TILE_SIZE - width))
+      y = rndInt(zone[1], zone[1] + (TILE_SIZE - height))
     }
 
     super(handler, x, y, width, height);

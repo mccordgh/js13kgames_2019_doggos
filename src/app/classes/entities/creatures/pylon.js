@@ -8,6 +8,6 @@ export class Pylon extends Creature {
 
     this.a = Assets.gA('all');
     this.type = 'pylon';
-    this.item = new IncomeItem(handler, this.type, 1, 60);
+    this.item = new IncomeItem(handler, this.type, 1, 600);
   }
 }
