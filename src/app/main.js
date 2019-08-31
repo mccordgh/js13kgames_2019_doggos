@@ -1,8 +1,8 @@
 import { Game } from './classes/game';
 
-window.TILE_SIZE = 64;
-window.GAME_WIDTH = 11;
-window.GAME_HEIGHT = 9;
+window.TILE_SIZE = 96;
+window.GAME_WIDTH = 7;
+window.GAME_HEIGHT = 5;
 
 window.rndInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 

@@ -13,7 +13,7 @@ export class World {
   }
 
   init() {
-    this.entityManager.addEntity(new Pylon(this.handler, TILE_SIZE * 5, TILE_SIZE * 4));
+    this.entityManager.addEntity(new Pylon(this.handler, TILE_SIZE * 3, TILE_SIZE * 2));
     this.entityManager.addEntity(new Priest(this.handler));
     this.entityManager.addEntity(new Priest(this.handler));
     this.entityManager.addEntity(new Priest(this.handler));
